@@ -12,6 +12,7 @@ let file_name;
 var newFileName = ()=>{file_name = Date.now();}
 
 // Upload logos from user
+
 var upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -23,6 +24,10 @@ var upload = multer({
     }
   })
 });
+
+router.get('/deployed', (req, res)=>{
+  res.send('HELLO')
+})
 
 router.post('/upload', upload.single('file'), async function (req, res, next) {
   const file = req.file
